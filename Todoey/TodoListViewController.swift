@@ -10,11 +10,18 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
 
-    var itemArray = ["apples", "pie", "coconuts"]
+//    var itemArray = ["apples", "pie", "coconuts"]
+    var itemArray = [String]()
+    let defaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
+            itemArray = items
+        }
+        
     }
 
     //MARK - Tableview Datasource Methods
@@ -60,6 +67,9 @@ class TodoListViewController: UITableViewController {
             
             //TODO - Check if text field is "" or "(spaces)"
             self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey: "TodoListArray")
+            
             print("Item Added!")
             self.tableView.reloadData()
         }
