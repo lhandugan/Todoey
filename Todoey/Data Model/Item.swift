@@ -1,0 +1,20 @@
+//
+//  Item.swift
+//  Todoey
+//
+//  Created by LaDonna Handugan on 4/19/19.
+//  Copyright © 2019 LaDonna Handugan. All rights reserved.
+//
+
+import Foundation
+
+class Item {
+    
+    var title : String = ""
+    var done : Bool = false
+    
+    init (itemTitle : String) {
+        title = itemTitle
+    }
+    
+}
